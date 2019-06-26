@@ -30,7 +30,7 @@
                 <ul class="list-unstyled components">
                     <font size="+1"><p><b>Human Management</b></p></font>
                     <li>
-                        <a href="{{url('admin')}}"><span class="glyphicon glyphicon-home"></span> &nbsp Home</a>
+                        <a href="/{{$user->role}}"><span class="glyphicon glyphicon-home"></span> &nbsp Home</a>
                     </li>
 		    <li>
 			<a href="#companySubmenu" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-briefcase"></span> &nbsp Company</a>
@@ -83,7 +83,50 @@
                     </div>
                 </nav>
 
-                <!-- Content -->
+                <!-- CONTENT -->
+                <form method="post">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="{{$user->avatar}}" alt="" style="width:150px;height=122px"/>
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                            <h5>
+                                {{$user->name}}
+                            </h5>
+                            <h6>
+                                <b style="text-transform: uppercase">{{$user->role}}</b>
+                            </h6>
+                            <p class="proile-rating">COMPANY : <span>{{$user->company}}</span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About &nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline &nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p style="color:black"><b>INFORMATION</b></p>
+                            Birthday : {{$user->birth}}<br/>
+                            Email : {{$user->email}}<br/>
+                            Phone 1 : {{$user->phone1}}<br>
+                            Phone 2 : {{$user->phone2}}<br>
+                        </div>
+                    </div>
+                </form>           
+                <!-- END CONTENT -->
             </div>
         </div>
 

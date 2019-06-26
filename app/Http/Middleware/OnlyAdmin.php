@@ -17,7 +17,7 @@ class OnlyAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role != 'admin'){
+        if(Auth::user()->role != 'admin' || Auth::user()->status == 'deactivate'){
 		return redirect('/nopermit');
 	}
 	return $next($request);

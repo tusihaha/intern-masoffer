@@ -10,6 +10,8 @@ use Auth;
 use Socialite;
 use Illuminate\Support\MessageBag;
 
+use Carbon\Carbon;
+
 
 use App\User;
 
@@ -74,7 +76,10 @@ class LoginController extends Controller
 			$newUser->name = $user->name;
 			$newUser->email = $user->email;
 			$newUser->google_id = $user->id;
+			$newUser->avatar = $user->avatar;
 			$newUser->role = 'employee';
+			$newUser->start_work = Carbon::now();
+			$newUser->end_work = "";
 			$newUser->save();
 
 			auth()->login($newUser, true);

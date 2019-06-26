@@ -31,7 +31,12 @@ Route::get('/admin', function () { return view('admin'); })->middleware('auth', 
 Route::get('/leader', function () { return view('manager'); })->middleware('auth');
 Route::get('/employee', function () { return view('employee'); })->middleware('auth');
 
-Route::get('nopermit', function () { return "You do not permit to do that!"; });
+Route::get('/profile', [ 'uses' => 'ProfileController@viewProfile' ])->middleware('auth');
+
+Route::get('nopermit', function () {
+    Auth::logout();
+    return "You do not permit to do that!"; 
+});
 
 // Route for test
 Route::get('/test/add/user/default', [ 'uses' => 'TestController@testAddUserDefault' ]);
